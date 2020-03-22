@@ -251,11 +251,16 @@ if __name__ == '__main__':
             continue
         s.settimeout(1)
         ret,msg = login(s)
-        print "h:help\nu:change user configure\na:add command\nc:change command\nd:delete command\ne:exec command\nq:exit"
         print msg
         if ret != 0:
             s.close()
+            print "u:change user configure\nq:exit"
+            str = raw_input(">>")
+            changeConfigure(s,str)
             continue
+
+        print "h:help\nu:change user configure\na:add command\nc:change command\nd:delete command\ne:exec command\nq:exit"
+        print msg
 
         while gDone == False:
             str = raw_input(">>")
